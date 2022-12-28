@@ -8,15 +8,15 @@ const schema = yup.object().shape({
 export const ContactForm = ({ onSubmit }) => {
   const initialValues = {
     name: '',
+    number: '',
   };
   const handleSubmit = (values, { resetForm }) => {
     resetForm();
-    onSubmit(values.name);
+    onSubmit(values.name, values.number);
   };
 
   return (
     <>
-      <h1>Phonebook</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -34,7 +34,6 @@ export const ContactForm = ({ onSubmit }) => {
             />
           </label>
           <label>
-            {' '}
             Number
             <Field
               type="tel"
