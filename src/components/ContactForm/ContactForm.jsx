@@ -1,5 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
+import { Formik, Form } from 'formik';
 import * as yup from 'yup';
+import { Label, Input, Emessage } from './ContactForm.styled';
+import { Button } from '../utils/utils';
 
 const schema = yup.object().shape({
   name: yup
@@ -40,19 +43,23 @@ export const ContactForm = ({ onSubmit }) => {
         onSubmit={handleSubmit}
       >
         <Form autoComplete="off">
-          <label>
+          <Label>
             Name
-            <Field type="text" name="name" />
-          </label>
-          <ErrorMessage component="span" name="name" />
-          <label>
+            <Input type="text" name="name" />
+          </Label>
+          <Emessage component="span" name="name" />
+          <Label>
             Number
-            <Field type="tel" name="number" />
-          </label>
-          <ErrorMessage component="span" name="number" />
-          <button type="submit">Add contact</button>
+            <Input type="tel" name="number" />
+          </Label>
+          <Emessage component="span" name="number" />
+          <Button type="submit">Add contact</Button>
         </Form>
       </Formik>
     </>
   );
+};
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };

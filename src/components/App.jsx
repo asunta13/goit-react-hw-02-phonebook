@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactList } from './ContactList/ContactList';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
+import { Wrapper } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -45,7 +46,7 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
     return (
-      <>
+      <Wrapper>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
         <h2>Contacts</h2>
@@ -54,7 +55,7 @@ export class App extends Component {
           contacts={filteredContacts}
           onDeleteContact={this.deleteContact}
         />
-      </>
+      </Wrapper>
     );
   }
 }
